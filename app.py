@@ -83,7 +83,7 @@ def signup():
         dp.commit()
         session['loggedin']=True
         session['username']=username
-        session['display_name']=diaplayName
+        session['display_name']=displayName
         return  redirect(url_for('home'))
     msg="please fill the form information"
     return render_template("signup.html",msg=msg)
