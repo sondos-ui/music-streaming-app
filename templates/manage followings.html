@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+
+    <h1>Hello {{username}}</h1>
+    <button type="button" onclick="window.location.href = '{{url_for('home')}}';">
+        Home
+    </button>
+
+
+
+
+    <table class="playlists_f">
+        <h2 id="h2_f">Manage Your Followings</h2>
+        <tbody>
+
+            {%for user in f_users%}
+            <tr>
+                <td class="signup_link"><a href="">{{user[0]}}</a></td>
+                <td>
+                <button onclick=window.location.href="{{url_for('unfollowUser2',type=user[0])}}" class="unfollow my_btn" color="green" >
+                    unfollow
+                </button>
+                </td>
+            </tr>
+            {%endfor%}
+
+            {%for user in df_users%}
+            <tr>
+                <td class="signup_link"><a href="">{{user[0]}}</a></td>
+                <td>
+                <button onclick=window.location.href="{{url_for('followUser2',type=user[0])}}" class="follow my_btn" color="black">
+                    follow 
+                </button>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+    
+
+
+
+</body>
+</html>

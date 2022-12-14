@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+
+    <script type="text/javascript">
+        
+    </script>
+</head>
+<body>
+
+    <table id="hell">
+        <tr><td><h1>Hello,  {{username}}</h1></td></tr>
+
+    </table>
+
+    <table class="right">
+
+        <tr>
+            <td>
+                <a id="b" class="my_btn" type="button" onclick="window.location.href = '{{url_for('home')}}';">
+                    Home
+                </a>
+            </td>
+            <td>
+
+                <button type="button" class="my_btn" id="b" onclick="window.location.href = '{{url_for('upload')}}';">
+                    Upload Track
+                </button>
+            </td>
+    </table>
+
+
+
+
+    <table class="playlists_f">
+        <h2 id="h2_f">Manage Your Likes</h2>
+        <tbody>
+
+            {%for my_track in l_tracks%}
+            <tr>
+                <td class="signup_link"><a href="">{{my_track[0]}}</a></td>
+                <td>
+                    <button onclick=window.location.href="{{url_for('dislikeSong',type=my_track[1])}}" class="unfollow my_btn" color="green" ">
+                        dis like
+                    </button>
+                </td>
+            </tr>
+            {%endfor%}
+            {%for my_track in dis_tracks%}
+            <tr>
+                <td class="signup_link"><a href="">{{my_track[0]}}</a></td>
+                <td>
+                    <button onclick=window.location.href="{{url_for('likeSong',type=my_track[1])}}" class="follow my_btn" color="black" ">
+                        like
+                    </button>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+    <table class="playlists_ed">
+        <h2 id="h2_ed">Manage Your Tracks</h2>
+        <tbody>
+
+            {%for track in my_tracks%}
+            <tr>
+                <td class="signup_link"><a>{{track[0]}}</a></td>
+                <td>
+
+                <td>
+                    <button onclick=window.location.href ="{{url_for('delTrack',type=track[1])}}" class="my_btn">
+                        Delete
+                    </button>
+                </td>
+                </td>
+            </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
+
+
+
+
+
+</body>
+</html>

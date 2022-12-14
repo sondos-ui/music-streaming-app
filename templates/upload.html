@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+</head>
+<body>
+
+    <div class="center">
+        <h1>Upload Track</h1>
+        <form action="{{url_for('upload')}}" method="post" enctype="multipart/form-data">
+            <h3 >
+                <label>Select Track</label>
+            </h3>
+            <h4 >
+                <input type="file" name="track" required>
+            </h4>
+            <h4 >
+                <input type="text" name="title" required>
+                <label>Title of the track</label>
+            </h4>
+            <div><label id="error"> {{msg}}</label></div>
+
+            <input type="submit" value="Upload">
+            <div class="signup_link">
+                Back To Home Page <a href="{{url_for('home')}}">Home</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

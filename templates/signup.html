@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+</head>
+<body>
+
+    <div class="center">
+        <h1>Login</h1>
+        <form action="{{url_for('signup')}}" method="post">
+            <div class="txt_field">
+                <input type="text" name="username" required>
+                <label>Username</label>
+            </div>
+            <div class="txt_field">
+                <input type="email" name="email" required>
+                <label>Email</label>
+            </div>
+
+            <div class="txt_field">
+                <input type="text" name="displayName" required>
+                <label>display name</label>
+            </div>
+            <div class="txt_field">
+                <input type="number" name="age" required>
+                <label>age</label>
+            </div>
+            <div class="txt_field">
+                <input type="text" name="gender" required>
+                <label>gender</label>
+            </div>
+            <div class="txt_field">
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+            <div><label id="error"> {{msg}}</label></div>
+
+            <input type="submit" value="Login">
+
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+
+    <script type="text/javascript">
+        
+    </script>
+</head>
+<body>
+
+    <table id="hell">
+        <tr><td><h1>Hello,  {{username}}</h1></td></tr>
+      
+    </table>
+
+    <table class="right">
+
+        <tr>
+            <td>
+                <a id="b" class="my_btn" type="button" onclick="window.location.href= '{{url_for('home')}}';">
+                    Home
+                </a>
+            </td>
+            <td>
+
+            <button type="button" class="my_btn" id="b"onclick="window.location.href= '{{url_for('createPlaylist')}}';">
+                Create New Playlist
+            </button>
+               </td>
+            </table>
+
+
+            <table class="playlists_f">
+                <h2 id="h2_f">Manage Following Playlists</h2>
+                <tbody>
+
+                    {%for playlist in f_lists%}
+                    <tr>
+                        <td class="signup_link"><a href="{{url_for('choosePlaylist',type=playlist[1])}}">{{playlist[0]}}</a></td>
+                        <td>
+                            <button onclick=window.location.href="{{url_for('unfollowPlaylist',type=playlist[1])}}" class="unfollow my_btn" color="green" ">
+                                unfollow
+                            </button>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                    {%for playlist in un_lists%}
+                    <tr>
+                        <td class="signup_link"><a>{{playlist[0]}}</a></td>
+                        <td>
+                            <button onclick=window.location.href="{{url_for('followPlaylist',type=playlist[1])}}" class="follow my_btn" color="black" ">
+                                follow
+                            </button>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+
+            <table class="playlists_ed">
+                <h2 id="h2_ed">Manage Your Playlists</h2>
+                <tbody>
+
+                    {%for playlist in user_lists%}
+                    <tr>
+                        <td class="signup_link"><a>{{playlist[0]}}</a></td>
+                        <td>
+
+                        <td>
+                            <button onclick=window.location.href ="{{url_for('delPlaylist',type=playlist[1])}}" class="my_btn">
+                                Delete
+                            </button>
+                        </td>
+                        </td>
+                    </tr>
+                    {%endfor%}
+
+                </tbody>
+            </table>
+
+
+
+
+
+</body>
+</html>

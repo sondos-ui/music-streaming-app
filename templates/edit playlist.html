@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+
+    <h1>Hello {{username}}</h1>
+    <button type="button" onclick="window.location.href = '{{url_for('home')}}';">
+        Home
+    </button>
+
+    <button type="button" onclick="window.location.href = '{{url_for('managePlaylists')}}';">
+        back to maniging your Playlists
+    </button>
+
+
+
+    <table class="playlists_f">
+        <tbody>
+            <tr>
+                <h2 id="h2_f">Edit {{playlist}} Playlist</h2>
+            </tr>
+            {%for song in mylist%}
+            <tr>
+                <td class="signup_link"><a>{{song[0]}}</a></td>
+                <td>
+                    <button onclick=window.location.href ="{{url_for('removeTrackFromPlaylist',song=song[1],p_name=playlist,p_id=p_id)}}" class="unfollow my_btn" color="black" ">
+                        Remove
+                    </button>
+                </td>
+            </tr>
+            {%endfor%}
+            {%for song in songs%}
+            <tr>
+                <td class="signup_link"><a>{{song[0]}}</a></td>
+                <td>
+                    <button onclick=window.location.href ="{{url_for('addTrackToPlaylist',p_name=playlist,song=song[1],p_id=p_id)}}" class="follow my_btn" color="black" ">
+                        Add
+                    </button>
+                </td>
+            </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
+
+    
+        </tbody>
+    </table>
+
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <script type="text/javascript" src="{{url_for('static',filename='css/jquery-3.6.1.min.js')}}"></script>
+    <script type="text/javascript">
+        function playSong(song) {
+            name = "static/" + song
+            var h = document.getElementById('songName');
+            h.textContent = 'NOW PLAYING: ' + song.slice(7, -4);
+            $('audio').attr('src', name);
+        }
+
+    
+
+    </script>
+</head>
+<body>
+    <table id="hell">
+        <tr><td><h1 >Hello,  {{username}}</h1></td></tr>
+        <tr>
+            <td>
+                
+                <a class="my_btn" type="button" onclick="window.location.href ='{{url_for('manageFollowers')}}';">
+                    <h2 id="b"color="black">
+                        followers
+                    </h2>
+            </a>
+
+            </td>
+            <td>
+                <a class="my_btn" type="button" onclick="window.location.href = '{{url_for('manageFollowings')}}';">
+                    <h2 id="b">
+                        following
+                    </h2>
+                </a>
+            </td>
+        </tr>
+    </table>
+    
+    <table class="right">
+      
+        <tr>
+            <td>
+                <a id="b" class="my_btn" type="button" onclick="window.location.href = '{{url_for('home')}}';">
+                    Home
+                </a>
+            </td>
+
+
+            <td>
+                <button id="b" class="my_btn" type="button" onclick="window.location.href = '{{url_for('mySongs')}}';">
+                    Play myTracks
+                </button>
+            </td>
+
+            <td>
+                <button id="b" class="my_btn" type="button" onclick="window.location.href = '{{url_for('myLikes')}}';">
+                    Play myLikes
+                </button>
+            </td>
+
+            <td>
+                <button id="b" class="my_btn" type="button" onclick="window.location.href = '{{url_for('upload')}}';">
+                    Upload Track
+                </button>
+
+
+            <td>
+                <button id="b" class="my_btn" type="button" onclick="window.location.href = '{{url_for('managePlaylists')}}';">
+                    Manage Playlists
+                </button>
+            </td>
+            <td>
+                <button id="b" class="my_btn" type="button" onclick="window.location.href = '{{url_for('manageTracks')}}';">
+                    Manage Tracks and Likes
+                </button>
+            </td>
+
+            <td>
+                <button id="b" color="black" class="my_btn" type="button" onclick="window.location.href = '{{url_for('logout')}}';">
+                    log out
+                </button>
+            </td>
+            
+
+        </tr>
+    </table>
+    <table class="songPlayer">
+
+        <tbody>
+
+            <tr>
+                <td><audio controls="controls" autoplay="autoplay"></audio></td>
+
+            </tr>
+            <tr>
+                <td id="songName"> <h2 id="songName">Now Playing:  </h2></td>
+
+            </tr>
+        </tbody>
+    </table>
+    <table class="songList">
+        <tbody>
+            {%for song in songs%}
+            <tr>
+                <td class="signup_link"><a href="javascript:void(0);" onclick="playSong('{{song[0]}}')">{{song[0][7:-4]}}</a></td>
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <table class="playlists">
+        <h2 id="plh2">All Playlists</h2>
+        <tbody>
+
+            {%for playlist in playlist_data%}
+            <tr>
+                <td class="signup_link"><a href="{{url_for('choosePlaylist',type=playlist[0])}}">{{playlist[1]}}</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+
+
+
+</body>
+</html>

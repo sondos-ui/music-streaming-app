@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+</head>
+<body>
+
+    <div class="center">
+        <table class="createList">
+            <tbody>
+        
+                <tr>
+                    <td>
+                        <form action="{{url_for('createPlaylist')}}" method="post">
+                           
+                                <h2>create playlist</h2>
+
+                            <h4>
+                                <input type="text" name="playlist_title" required>
+                                <label>Title of the playlist</label>
+                            </h4>
+
+                            <input type="submit" height="20px" value="Create">
+                            <div class="signup_link">
+                                Back To Home Page <a href="{{url_for('home')}}">Home</a>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+ 
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>
